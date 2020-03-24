@@ -4,14 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:main="clr-namespace:SatisfactoryCalculator"
+        xmlns:v="clr-namespace:SatisfactoryCalculator.Views"
+        xmlns:vm="clr-namespace:SatisfactoryCalculator.ViewModels"
         DataContext="{StaticResource MainWindowViewModel}"
         mc:Ignorable="d"
         Title="Satisfactory Calculator"
         Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
     <!-- **************************************************************************************************** -->
-    <Grid>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:AddBuildingViewModel}">
+            <v:AddBuildingView/>
+        </DataTemplate>
+    </Window.Resources>
+    <!-- **************************************************************************************************** -->
 
+    <!-- **************************************************************************************************** -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ContentControl Content="{Binding CurrentViewModel}"
+                        Grid.Row="0"/>
+
+        <Button Content="Add Building"
+                Grid.Row="1"
+                Padding="20,3"
+                Margin="10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Cursor="Hand"
+                Command="{Binding OpenAddBuildingViewCommand}"/>
+        
     </Grid>
     <!-- **************************************************************************************************** -->
 </Window>
