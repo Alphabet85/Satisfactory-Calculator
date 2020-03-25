@@ -23,28 +23,6 @@ namespace SatisfactoryCalculator
 
         #region " Properties "
 
-        private object _currentViewModel;
-        public object CurrentViewModel
-        {
-            get { return _currentViewModel; }
-            set 
-            {
-                _currentViewModel = value;
-                OnPropertyChanged("CurrentViewModel");
-            }
-        }
-
-        private AddBuildingViewModel _addBuildingViewModel;
-        public AddBuildingViewModel AddBuildingViewModel
-        {
-            get { return _addBuildingViewModel; }
-            set 
-            { 
-                _addBuildingViewModel = value;
-                OnPropertyChanged("AddBuildingViewModel");
-            }
-        }
-
         #region " Command Properties "
 
         private ICommand _openAddBuildingViewCommand;
@@ -64,16 +42,14 @@ namespace SatisfactoryCalculator
 
         #region " Methods "
 
-        #endregion
-
-        #region " Commands "
+        #region " Command Methods "
 
         private void OpenAddBuildingView()
         {
             Console.WriteLine("Add Building Command Initiated");
-            AddBuildingViewModel _addBuildingViewModel = new AddBuildingViewModel();
-            CurrentViewModel = _addBuildingViewModel;
         }
+
+        #endregion
 
         #endregion
     }

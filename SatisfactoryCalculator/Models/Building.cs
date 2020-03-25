@@ -11,5 +11,10 @@ namespace SatisfactoryCalculator.Models
     {
         public string Name { get; set; }
         public BuildingType EBuildingType { get; set; }
+        public string ResourceInput { get; set; }
+        public int ResourceInputPerMinute { get; set; }
+        public string ResourceOutput { get; set; }
+        public int ResourceOutputPerMinute { get; set; }
+
     }
 }
