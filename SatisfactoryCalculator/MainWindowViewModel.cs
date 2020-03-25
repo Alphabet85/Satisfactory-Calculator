@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace SatisfactoryCalculator
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : ViewModelBase
     {
         #region " Constructor "
 
@@ -73,16 +73,6 @@ namespace SatisfactoryCalculator
             Console.WriteLine("Add Building Command Initiated");
             AddBuildingViewModel _addBuildingViewModel = new AddBuildingViewModel();
             CurrentViewModel = _addBuildingViewModel;
-        }
-
-        #endregion
-
-        #region " INotifyPropertyChanged "
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         #endregion

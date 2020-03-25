@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="ViewModels\AddBuildingViewModel.cs" />
     <Compile Include="Views\AddBuildingView.xaml.cs">
       <DependentUpon>AddBuildingView.xaml</DependentUpon>
