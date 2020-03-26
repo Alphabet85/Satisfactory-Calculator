@@ -16,23 +16,101 @@ namespace SatisfactoryCalculator
 
         public MainWindowViewModel()
         {
-            OpenAddBuildingViewCommand = new RelayCommand(o => { OpenAddBuildingView(); }, o => true);
+            CalculateCommand = new RelayCommand(o => { Calculate(); }, o => CheckFields());
+            ResetCommand = new RelayCommand(o => { Reset(); }, o => true);
         }
 
         #endregion
 
         #region " Properties "
 
-        #region " Command Properties "
-
-        private ICommand _openAddBuildingViewCommand;
-        public ICommand OpenAddBuildingViewCommand
+        private string _outputPerMinute;
+        public string OutputPerMinute
         {
-            get { return _openAddBuildingViewCommand; }
+            get { return _outputPerMinute; }
+            set 
+            { 
+                _outputPerMinute = value;
+                OnPropertyChanged("OutputPerMinute");
+            }
+        }
+
+        private string _inputPerMinute;
+        public string InputPerMinute
+        {
+            get { return _inputPerMinute; }
             set
             {
-                _openAddBuildingViewCommand = value;
-                OnPropertyChanged("OpenAddBuildingViewCommand");
+                _inputPerMinute = value;
+                OnPropertyChanged("InputPerMinute");
+            }
+        }
+
+        private string _numberOfResourcesNeeded;
+        public string NumberOfResourcesNeeded
+        {
+            get { return _numberOfResourcesNeeded; }
+            set
+            {
+                _numberOfResourcesNeeded = value;
+                OnPropertyChanged("NumberOfResourcesNeeded");
+            }
+        }
+
+        private string _sourceProductionTimePerUnit;
+        public string SourceProductionTimePerUnit
+        {
+            get { return _sourceProductionTimePerUnit; }
+            set
+            {
+                _sourceProductionTimePerUnit = value;
+                OnPropertyChanged("SourceProductionTimePerUnit");
+            }
+        }
+
+        private string _destinationProductionTimePerUnit;
+        public string DestinationProductionTimePerUnit
+        {
+            get { return _destinationProductionTimePerUnit; }
+            set
+            {
+                _destinationProductionTimePerUnit = value;
+                OnPropertyChanged("DestinationProductionTimePerUnit");
+            }
+        }
+
+        private bool _isCalculateButtonEnabled;
+        public bool IsCalculateButtonEnabled
+        {
+            get { return _isCalculateButtonEnabled; }
+            set 
+            {
+                _isCalculateButtonEnabled = value;
+                OnPropertyChanged("IsCalculateButtonEnabled");
+            }
+        }
+
+        #region " Command Properties "
+
+        private ICommand _calculateCommand;
+        public ICommand CalculateCommand
+        {
+            get { return _calculateCommand; }
+            set 
+            { 
+                _calculateCommand = value;
+                OnPropertyChanged("CalculateCommand");
+            }
+        }
+
+        private ICommand _resetCommand;
+        public ICommand ResetCommand
+        {
+            get { return _resetCommand; }
+            set
+            {
+                _resetCommand = value;
+                OnPropertyChanged("ResetCommand");
             }
         }
 
@@ -44,9 +122,26 @@ namespace SatisfactoryCalculator
 
         #region " Command Methods "
 
-        private void OpenAddBuildingView()
+        private void Calculate()
         {
-            Console.WriteLine("Add Building Command Initiated");
+            Console.WriteLine("Calculate Entries");
+            Console.WriteLine(OutputPerMinute + " / " + InputPerMinute + " / " + NumberOfResourcesNeeded + " / " + SourceProductionTimePerUnit + " / " + DestinationProductionTimePerUnit);
+
+        }
+
+        private void Reset()
+        {
+            OutputPerMinute = "";
+            InputPerMinute = "";
+            NumberOfResourcesNeeded = "";
+            SourceProductionTimePerUnit = "";
+            DestinationProductionTimePerUnit = "";
+
+        }
+
+        private bool CheckFields()
+        {
+            return !string.IsNullOrEmpty(OutputPerMinute) && !string.IsNullOrEmpty(InputPerMinute) && !string.IsNullOrEmpty(NumberOfResourcesNeeded) && !string.IsNullOrEmpty(DestinationProductionTimePerUnit) && !string.IsNullOrEmpty(SourceProductionTimePerUnit);
         }
 
         #endregion
