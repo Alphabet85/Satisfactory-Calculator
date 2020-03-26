@@ -16,8 +16,7 @@ namespace SatisfactoryCalculator
 
         public MainWindowViewModel()
         {
-            CalculateCommand = new RelayCommand(o => { Calculate(); }, o => CheckFields());
-            ResetCommand = new RelayCommand(o => { Reset(); }, o => true);
+            
         }
 
         #endregion
@@ -95,7 +94,11 @@ namespace SatisfactoryCalculator
         private ICommand _calculateCommand;
         public ICommand CalculateCommand
         {
-            get { return _calculateCommand; }
+            get 
+            {
+                _calculateCommand = new RelayCommand(o => { Calculate(); }, o => CheckFields());
+                return _calculateCommand; 
+            }
             set 
             { 
                 _calculateCommand = value;
@@ -106,7 +109,11 @@ namespace SatisfactoryCalculator
         private ICommand _resetCommand;
         public ICommand ResetCommand
         {
-            get { return _resetCommand; }
+            get 
+            {
+                _resetCommand = new RelayCommand(o => { Reset(); }, o => true);
+                return _resetCommand; 
+            }
             set
             {
                 _resetCommand = value;
